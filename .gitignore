@@ -1,5 +1,31 @@
+# Library files from class resources that shouldn't be tracked since they are OS-specific
+**/fssimplewindow.h
+**/mmlplayer.h
+**/ym2612.h
+**/yspngenc.h
+**/yspng.h
+**/yssimplesound.h
+
+**/fssimplewindow.cpp
+**/mmlplayer.cpp
+**/yspng.cpp
+**/yspngenc.cpp
+**/yssimplesound.cpp
+
+**/yssimplesound_macosx_objc.m
+**/fssimplewindowobjc.m
+**/fssimplewindowcpp.cpp
+
+# Some random text file included in the class Box folder in case it gets in someone's workspace
+**/compile_command.txt
+
+# Clang compilation configuration files
+compile_commands.json
+compile_flags.txt
+
 # Makefile
 [Mm]akefile
+[Bb]uild/
 
 # Clangd configuration file
 .clangd
