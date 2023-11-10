@@ -1,0 +1,11 @@
+Final Project for 24-780 Engineering Computation at Carnegie Mellon Universtiy.
+
+Group Members:
+    - Mya Chappell
+    - Atharva Manohar Mhaskar
+    - Casey Walker
+    - Eric Zhao
+    - Rubin Chen
+
+The project is a simulated delivery system/game in which a player selects from a set of available delivery robots and assigns them to randomly-generated orders.
+Each robot follows a planned path in order to accomplish its delivery around locations on CMU's campus.
