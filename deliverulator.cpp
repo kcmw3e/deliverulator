@@ -3,11 +3,11 @@
 // University.
 //
 // Group members:
-// 	- Mya Chappell
-// 	- Atharva Manohar Mhaskar
-// 	- Casey Walker
-// 	- Eric Zhao
-// 	- Rubin Chen
+//      - Mya Chappell
+//      - Atharva Manohar Mhaskar
+//      - Casey Walker
+//      - Eric Zhao
+//      - Rubin Chen
 // ============================================================================================== //
 
 #include "map.h"
