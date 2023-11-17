@@ -30,7 +30,7 @@ private:
     void init();
     void tick();
     void handle_input();
-    void draw();
+    void draw() const;
 public:
     UI();
     void run();

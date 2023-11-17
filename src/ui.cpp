@@ -21,7 +21,7 @@ void UI::handle_input() {
     }
 }
 
-void UI::draw() {
+void UI::draw() const {
     for (auto robot: this->robots)
         robot.draw();
 }
