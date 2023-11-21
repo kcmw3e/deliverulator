@@ -12,12 +12,10 @@
 
 #include "map.h"
 
-using size_t = std::size_t;
-
 struct Order {
-    const Node& src;
-    const Node& dest;
-    const size_t id;
+    const Map::Node& src;
+    const Map::Node& dest;
+    const int id;
 };
 
 #endif // !defined(ORDER_H)

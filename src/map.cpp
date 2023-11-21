@@ -4,5 +4,6 @@
 
 #include "map.h"
 
-class Node;
-class Map;
+namespace Map {
+    static void draw() { }
+}

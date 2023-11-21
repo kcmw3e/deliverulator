@@ -4,4 +4,8 @@
 
 #include "robot.h"
 
-class Robot;
+void Robot::draw() { }
+
+void Robot::tick() { }
+
+void Robot::assign_order(Order* order) { }

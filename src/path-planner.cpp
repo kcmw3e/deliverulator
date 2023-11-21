@@ -4,4 +4,4 @@
 
 #include "path-planner.h"
 
-class Path_planner;
+Path path_planner(Map::Node& start, Map::Node& src, Map::Node& dest) { }

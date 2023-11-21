@@ -25,12 +25,13 @@ private:
     bool is_running = false;
 
     Robot robots[5];
-    std::set<Order> orders;
+    std::vector<Order*> orders;
 
     void init();
     void tick();
     void handle_input();
     void draw() const;
+    void generate_order();
 public:
     UI();
     void run();

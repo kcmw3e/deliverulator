@@ -15,8 +15,36 @@
 #if !defined(MAP_H)
 #define MAP_H
 
-class Node;
+#include <vector>
+#include <string>
 
-class Map;
+namespace Map {
+    struct Node {
+        static constexpr double rad = 1.0;
+
+        const double x;
+        const double y;
+        const std::string name;
+        const std::vector<const Node*> neighbors;
+    };
+
+    static const Node nodes[] = {
+        Node{0.1, 2.3, "foo", {nodes + 0, nodes + 1, nodes + 2}},
+        Node{4.5, 6.7, "bar", {nodes + 2}},
+        Node{8.9, 0.1, "baz", {nodes + 2}},
+    };
+    static const size_t nodes_len = std::size(nodes);
+
+    static const Node* buildings[] = {
+        nodes + 0,
+        nodes + 2,
+    };
+    static const size_t buildings_len = std::size(buildings);
+
+    static const double w = 700;
+    static const double h = 700;
+
+    static void draw();
+};
 
 #endif // !defined(MAP_H)

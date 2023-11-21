@@ -10,6 +10,8 @@
 
 #include "map.h"
 
-class Path_planner;
+using Path = std::vector<Map::Node*>;
+
+Path path_planner(Map::Node* start, Map::Node* src, Map::Node* dest);
 
 #endif // !defined(PATH_PLANNER_H)
