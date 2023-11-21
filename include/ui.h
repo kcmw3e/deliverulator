@@ -13,6 +13,28 @@
 #include "order.h"
 #include "robot.h"
 
-class UI;
+#include "fssimplefixes.h"
+
+namespace FSSF = FSSimple_Fixes;
+
+class UI {
+private:
+    FSSF::Window win = FSSF::Window(800, 600);
+    FSSF::Key kill = FSSF::Key(FSKEY_ESC);
+    FSSF::Mouse mouse = FSSF::Mouse();
+    bool is_running = false;
+
+    Robot robots[5];
+    std::vector<Order*> orders;
+
+    void init();
+    void tick();
+    void handle_input();
+    void draw() const;
+    void generate_order();
+public:
+    UI();
+    void run();
+};
 
 #endif // !defined(UI_H)
