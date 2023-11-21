@@ -10,6 +10,10 @@
 
 #include "map.h"
 
-class Order;
+struct Order {
+    const Map::Node& src;
+    const Map::Node& dest;
+    const int id;
+};
 
 #endif // !defined(ORDER_H)
