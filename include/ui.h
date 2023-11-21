@@ -26,10 +26,14 @@ private:
 
     Robot robots[5];
     std::vector<Order*> orders;
+    int next_order_id = 0;
 
     void init();
     void tick();
     void handle_input();
+    void draw_border(double x, double y, double w, double h) const;
+    void draw_robot_table(double x, double y, const Robot& robot) const;
+    void draw_order_table(double x, double y, const Order& order) const;
     void draw() const;
     void generate_order();
 public:
