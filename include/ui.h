@@ -14,8 +14,10 @@
 #include "robot.h"
 
 #include "fssimplefixes.h"
+#include "yssimplefixes.h"
 
 namespace FSSF = FSSimple_Fixes;
+namespace YSSF = YSSimple_Fixes;
 
 class UI {
 private:
@@ -27,6 +29,7 @@ private:
     Robot robots[5];
     std::vector<Order*> orders;
     int next_order_id = 0;
+    YSSF::Raw_rgba_img map_img;
 
     void init();
     void tick();

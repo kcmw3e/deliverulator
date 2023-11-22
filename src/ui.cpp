@@ -79,6 +79,7 @@ void UI::draw() const {
     Colors::black.set_as_gl_clear_color();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    this->map_img.draw();
     this->draw_table();
 
     FsSwapBuffers();
@@ -101,7 +102,8 @@ void UI::generate_order() {
     orders.push_back(order);
 }
 
-UI::UI() { }
+UI::UI()
+: map_img(YSSF::Raw_rgba_img::from_file(Map::map_filename)) { }
 
 void UI::run() {
     this->init();
