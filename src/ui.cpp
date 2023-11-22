@@ -87,7 +87,7 @@ void UI::draw() const {
 }
 
 void UI::generate_order() {
-    int l = Map::buildings_len; //get from map
+    int l = Map::buildings.size(); //get from map
     int n1 = rand() % l;
     int n2 = rand() % l;
 
