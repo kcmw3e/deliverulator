@@ -7,7 +7,6 @@
 #if !defined(PRIMITIVES_H)
 #define PRIMITIVES_H
 
-#include "fssimplewindow.h" // includes OpenGL, takes care of different OS locations
 
 namespace Primitives {
     // filled rectangle

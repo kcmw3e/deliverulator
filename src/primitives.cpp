@@ -2,6 +2,8 @@
 // Primary author: Casey Walker
 // ============================================================================================== //
 
+#include "fssimplewindow.h" // includes OpenGL, takes care of different OS locations
+
 #include "primitives.h"
 
 namespace Primitives {
