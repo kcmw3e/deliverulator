@@ -81,6 +81,7 @@ void UI::draw() const {
 
     this->map_img.draw();
     this->draw_table();
+    Map::draw();
 
     FsSwapBuffers();
 }
