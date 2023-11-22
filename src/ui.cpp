@@ -91,7 +91,7 @@ void UI::generate_order() {
     int n2 = rand() % l;
 
     while (n1 == n2) {
-            n2 = rand() % l;
+        n2 = rand() % l;
     }
 
     Order* order = new Order{
