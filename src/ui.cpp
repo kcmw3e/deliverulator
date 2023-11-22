@@ -5,6 +5,10 @@
 #include "ysglfontdata.h"
 
 #include "ui.h"
+#include "primitives.h"
+#include "rgba.h"
+
+namespace Prims = Primitives;
 
 void UI::init() {
     this->win.open();
@@ -33,36 +37,6 @@ void UI::handle_input() {
     }
 }
 
-void UI::draw_border(double x, double y, double w, double h) const {
-    glColor3f(0.0, 0.0, 0.0);
-    glBegin(GL_LINE_LOOP);
-    glVertex2d(x, y);
-    glVertex2d(x + w, y);
-    glVertex2d(x + w, y + h);
-    glVertex2d(x, y + h);
-    glEnd();
-}
-
-void UI::draw_robot_table(double x, double y, const Robot& robot) const {
-    if (robot.is_busy())
-        glColor3f(0.0, 0.0, 0.0);
-    else
-        glColor3f(1.0, 0.0, 0.0);
-
-    double text_y = y + 30;
-    std::string s = "Robot ID: " + robot.id;
-    glRasterPos2i(x + 40, text_y);
-    YsGlDrawFontBitmap12x16(s.c_str());
-}
-
-void UI::draw_order_table(double x, double y, const Order& order) const {
-    glColor3f(0.0, 0.0, 0.0);
-    double text_y = y + 30;
-    std::string s = "Order No." + std::to_string(order.id) + "    - " + order.src.name + "to" + order.dest.name;
-    glRasterPos2i(x + 40, text_y);
-    YsGlDrawFontBitmap12x16(s.c_str());
-}
-
 void UI::draw() const {
     double ref_x = Map::w;
     double order_x = ref_x + 200;
@@ -89,15 +63,17 @@ void UI::draw() const {
     glRasterPos2i(ref_x + 280, 40);
     YsGlDrawFontBitmap20x28("Orders");
 
-    for (size_t i = 0; i < std::size(this->robots); i++) {
-        this->draw_border(ref_x, table_y + i*spacing, robot_w, spacing);
-        this->draw_robot_table(ref_x, table_y + i*spacing, robots[i]);
-    }
+    for (size_t i = 0; i < std::size(this->robots); i++)
+        Prims::table_cell(
+                ref_x, table_y + i*spacing, robot_w, spacing, 1.0, Colors::red,
+                robots[i].id, Colors::white
+        );
 
-    for (size_t i = 0; i < orders.size(); i++) {
-        this->draw_border(order_x, table_y + i*spacing, order_w, spacing);
-        this->draw_order_table(order_x, table_y + i*spacing, *orders[i]);
-    }
+    for (size_t i = 0; i < orders.size(); i++)
+        Prims::table_cell(
+            order_x, table_y + i*spacing, order_w, spacing, 1.0, Colors::red,
+            std::to_string(orders[i]->id), Colors::white
+        );
 
     for (auto robot: this->robots)
         robot.draw();
