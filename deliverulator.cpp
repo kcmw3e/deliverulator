@@ -17,6 +17,8 @@
 #include "order.h"
 #include "path-planner.h"
 #include "ui.h"
+#include "fssimplewindow.h"
+#include <random>
 
 int main() {
     FsChangeToProgramDir();
