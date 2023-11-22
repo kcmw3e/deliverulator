@@ -38,6 +38,9 @@ void UI::handle_input() {
 }
 
 void UI::draw() const {
+    Colors::black.set_as_gl_clear_color();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
     double ref_x = Map::w;
     double order_x = ref_x + 200;
     double table_y = 50;
@@ -77,6 +80,8 @@ void UI::draw() const {
 
     for (auto robot: this->robots)
         robot.draw();
+
+    FsSwapBuffers();
 }
 
 void UI::generate_order() {
