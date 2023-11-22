@@ -7,6 +7,7 @@
 #if !defined(PRIMITIVES_H)
 #define PRIMITIVES_H
 
+#include "rgba.h"
 
 namespace Primitives {
     // filled rectangle
@@ -14,6 +15,9 @@ namespace Primitives {
 
     // hollow rectangle with line width
     void rect(double x, double y, double w, double h, double lw);
+
+    void rect(double x, double y, double w, double h, RGBA c);
+    void rect(double x, double y, double w, double h, double lw, RGBA c);
 }
 
 #endif // !defined(PRIMITIVES_H)

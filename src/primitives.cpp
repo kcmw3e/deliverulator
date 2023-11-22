@@ -25,4 +25,14 @@ namespace Primitives {
         glVertex2d(x    , y + h);
         glEnd();
     }
+
+    void rect(double x, double y, double w, double h, RGBA c) {
+        c.set_as_gl_color();
+        rect(x, y, w, h);
+    }
+
+    void rect(double x, double y, double w, double h, double lw, RGBA c) {
+        c.set_as_gl_color();
+        rect(x, y, w, h, lw);
+    }
 }
