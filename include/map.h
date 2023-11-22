@@ -31,43 +31,43 @@ namespace Map {
         Node(const Node& node, const std::vector<const Node*> neightbors);
     };
 
-    static Node HH{77, 527, "HH"};
-    static Node PH{100, 572, "PH"};
-    static Node BH{211, 633, "BH"};
-    static Node WEH{121, 495, "WEH"};
-    static Node DH{227, 524, "DH"};
-    static Node CFA{448, 594, "CFA"};
-    static Node FE{397, 549, "FE"};
-    static Node POS{547, 642, "POS"};
-    static Node MM{595, 566, "MM"};
-    static Node CUC{529, 324, "CUC"};
-    static Node PCA{392, 388, "PCA"};
-    static Node GHC{256, 382, "GHC"};
-    static Node TEP{203, 109, "TEP"};
+    static Node HH{77, 173, "HH"};
+    static Node PH{100, 173, "PH"};
+    static Node BH{211, 67, "BH"};
+    static Node WEH{121, 205, "WEH"};
+    static Node DH{227, 176, "DH"};
+    static Node CFA{448, 106, "CFA"};
+    static Node FE{397, 151, "FE"};
+    static Node POS{547, 58, "POS"};
+    static Node MM{595, 134, "MM"};
+    static Node CUC{529, 376, "CUC"};
+    static Node PCA{392, 312, "PCA"};
+    static Node GHC{256, 318, "GHC"};
+    static Node TEP{203, 591, "TEP"};
 
-    static Node HH1{108, 540, "HH1"};
-    static Node PH1{106, 560, "PH1"};
-    static Node WEH1{116, 519, "WEH1"};
-    static Node DH1{218, 547, "DH1"};
-    static Node BH1{220, 590, "BH1"};
-    static Node CFALawn1{346, 582, "CFALawn1"};
-    static Node CFALawn2{335, 622, "CFALawn2"};
-    static Node CutLLC{364, 532, "CutLLC"};
-    static Node CutLRC{447, 554, "CutLRC"};
-    static Node CFA1{439, 587, "CFA1"};
-    static Node POS1{548, 620, "POS1"};
-    static Node MM1{575, 590, "MM1"};
-    static Node CutInter{408, 487, "CutInter"}; // Cut intersection at middle
-    static Node CutULC{395, 411, "CutULC"};
-    static Node PB{317, 391, "PB"}; // Pausch Bridge
-    static Node CutURC{484, 434, "CutURC"};
-    static Node CUC1{514, 321, "CUC1"};
-    static Node PCA1{403, 394, "PCA1"};
-    static Node PCA2{429, 295, "PCA2"};
-    static Node Forbes1{443, 242, "Forbes1"}; // Intersection point from Forbes to CUC/PCA
-    static Node ForbesMorewood{449, 187, "ForbesMorewood"}; // Forbes/Morewood intersection
-    static Node ForbesTepper{262, 190, "ForbesTepper"}; // Forbes/Tepper Intersection
-    static Node TEP1{261, 130, "TEP1"};
+    static Node HH1{108, 160, "HH1"};
+    static Node PH1{106, 140, "PH1"};
+    static Node WEH1{116, 181, "WEH1"};
+    static Node DH1{218, 153, "DH1"};
+    static Node BH1{220, 110, "BH1"};
+    static Node CFALawn1{346, 118, "CFALawn1"};
+    static Node CFALawn2{335, 78, "CFALawn2"};
+    static Node CutLLC{364, 168, "CutLLC"};
+    static Node CutLRC{447, 146, "CutLRC"};
+    static Node CFA1{439, 113, "CFA1"};
+    static Node POS1{548, 80, "POS1"};
+    static Node MM1{575, 110, "MM1"};
+    static Node CutInter{408, 213, "CutInter"}; // Cut intersection at middle
+    static Node CutULC{395, 289, "CutULC"};
+    static Node PB{317, 309, "PB"}; // Pausch Bridge
+    static Node CutURC{484, 266, "CutURC"};
+    static Node CUC1{514, 379, "CUC1"};
+    static Node PCA1{403, 306, "PCA1"};
+    static Node PCA2{429, 405, "PCA2"};
+    static Node Forbes1{443, 458, "Forbes1"}; // Intersection point from Forbes to CUC/PCA
+    static Node ForbesMorewood{449, 513, "ForbesMorewood"}; // Forbes/Morewood intersection
+    static Node ForbesTepper{262, 510, "ForbesTepper"}; // Forbes/Tepper Intersection
+    static Node TEP1{261, 570, "TEP1"};
 
     static const std::vector<Node> nodes = {
         Node(HH,  {&HH1}),
