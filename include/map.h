@@ -41,9 +41,6 @@ namespace Map {
     };
     static const size_t buildings_len = std::size(buildings);
 
-    static const double w = 700;
-    static const double h = 700;
-
     static const std::string map_filename = "resrc/map.png";
 
     void draw();

@@ -21,15 +21,16 @@ namespace YSSF = YSSimple_Fixes;
 
 class UI {
 private:
-    FSSF::Window win = FSSF::Window(1500, 700);
-    FSSF::Key kill = FSSF::Key(FSKEY_ESC);
-    FSSF::Mouse mouse = FSSF::Mouse();
-    bool is_running = false;
-
     Robot robots[5];
     std::vector<Order*> orders;
     int next_order_id = 0;
     YSSF::Raw_rgba_img map_img;
+
+    FSSF::Window win;
+    FSSF::Key kill = FSSF::Key(FSKEY_ESC);
+    FSSF::Mouse mouse = FSSF::Mouse();
+    bool is_running = false;
+
 
     void init();
     void tick();

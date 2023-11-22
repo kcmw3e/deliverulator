@@ -7,6 +7,7 @@
 #include "ui.h"
 #include "primitives.h"
 #include "rgba.h"
+#include "config.h"
 
 namespace Prims = Primitives;
 
@@ -38,28 +39,31 @@ void UI::handle_input() {
 }
 
 void UI::draw_table() const {
-    double cell_w = 200.0;
-    double cell_h = 40.0;
-    double border_w = 2.0;
+    double cell_w = Config::Table::cell_w;
+    double cell_h = Config::Table::cell_h;
+    double cell_bw = Config::Table::cell_bw;
+    auto text_color = Config::Colors::text;
+    auto text_active_color = Config::Colors::text_active;
+    auto cell_border_color = Config::Colors::cell_border;
 
     double x = this->map_img.w;
     double y = this->map_img.h - cell_h;
 
-    Prims::table_cell(x, y, cell_w, cell_h, border_w, Colors::red, "Robots", Colors::white);
+    Prims::table_cell(x, y, cell_w, cell_h, cell_bw, cell_border_color, "Robots", text_color);
 
     for (size_t i = 0; i < std::size(this->robots); i++)
         Prims::table_cell(
-                x, y - (i + 1)*cell_h, cell_w, cell_h, border_w, Colors::red,
-                robots[i].id, Colors::white
+                x, y - (i + 1)*cell_h, cell_w, cell_h, cell_bw, cell_border_color,
+                robots[i].id, robots[i].is_busy() ? text_active_color : text_color
         );
 
     x += cell_w;
 
-    Prims::table_cell(x, y, cell_w, cell_h, border_w, Colors::red, "Orders", Colors::white);
+    Prims::table_cell(x, y, cell_w, cell_h, cell_bw, cell_border_color, "Orders", text_color);
     for (size_t i = 0; i < orders.size(); i++)
         Prims::table_cell(
-            x, y - (i + 1)*cell_h, cell_w, cell_h, border_w, Colors::red,
-            std::to_string(orders[i]->id), Colors::white
+            x, y - (i + 1)*cell_h, cell_w, cell_h, cell_bw, cell_border_color,
+            std::to_string(orders[i]->id), text_color
         );
 
     for (auto robot: this->robots)
@@ -72,7 +76,7 @@ void UI::draw() const {
     glLoadIdentity();
     glOrtho(0, this->win.viewport.w, 0, this->win.viewport.h, -1.0, 1.0);
 
-    Colors::black.set_as_gl_clear_color();
+    Config::Colors::bg.set_as_gl_clear_color();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     this->map_img.draw();
@@ -99,7 +103,8 @@ void UI::generate_order() {
 }
 
 UI::UI()
-: map_img(YSSF::Raw_rgba_img::from_file(Map::map_filename)) { }
+: map_img(YSSF::Raw_rgba_img::from_file(Map::map_filename)),
+  win(map_img.w + Config::Table::cell_w*2, map_img.h) { }
 
 void UI::run() {
     this->init();
