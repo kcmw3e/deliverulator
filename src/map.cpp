@@ -5,5 +5,5 @@
 #include "map.h"
 
 namespace Map {
-    static void draw() { }
+    void draw() { }
 }

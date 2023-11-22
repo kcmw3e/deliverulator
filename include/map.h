@@ -44,7 +44,7 @@ namespace Map {
     static const double w = 700;
     static const double h = 700;
 
-    static void draw();
+    void draw();
 };
 
 #endif // !defined(MAP_H)
