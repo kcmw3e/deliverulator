@@ -19,7 +19,7 @@ namespace FSSF = FSSimple_Fixes;
 
 class UI {
 private:
-    FSSF::Window win = FSSF::Window(800, 600);
+    FSSF::Window win = FSSF::Window(1500, 700);
     FSSF::Key kill = FSSF::Key(FSKEY_ESC);
     FSSF::Mouse mouse = FSSF::Mouse();
     bool is_running = false;
