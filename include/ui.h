@@ -14,22 +14,28 @@
 #include "robot.h"
 
 #include "fssimplefixes.h"
+#include "yssimplefixes.h"
 
 namespace FSSF = FSSimple_Fixes;
+namespace YSSF = YSSimple_Fixes;
 
 class UI {
 private:
-    FSSF::Window win = FSSF::Window(800, 600);
+    Robot robots[5];
+    std::vector<Order*> orders;
+    int next_order_id = 0;
+    YSSF::Raw_rgba_img map_img;
+
+    FSSF::Window win;
     FSSF::Key kill = FSSF::Key(FSKEY_ESC);
     FSSF::Mouse mouse = FSSF::Mouse();
     bool is_running = false;
 
-    Robot robots[5];
-    std::vector<Order*> orders;
 
     void init();
     void tick();
     void handle_input();
+    void draw_table() const;
     void draw() const;
     void generate_order();
 public:

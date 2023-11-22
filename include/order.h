@@ -8,6 +8,8 @@
 #if !defined(ORDER_H)
 #define ORDER_H
 
+#include <cstddef>
+
 #include "map.h"
 
 struct Order {

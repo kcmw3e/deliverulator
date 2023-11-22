@@ -22,9 +22,12 @@ class Robot {
     Path path;
     Map::Node* last_dest;
 public:
-    void draw();
+    const std::string id;
+
+    void draw() const;
     void tick();
     void assign_order(Order* order);
+    bool is_busy() const;
 };
 
 #endif // !defined(ROBOT_H)

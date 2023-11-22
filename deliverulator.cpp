@@ -10,6 +10,8 @@
 //      - Rubin Chen
 // ============================================================================================== //
 
+#include "fssimplewindow.h"
+
 #include "map.h"
 #include "robot.h"
 #include "order.h"
@@ -17,5 +19,11 @@
 #include "ui.h"
 
 int main() {
+    FsChangeToProgramDir();
+
+    UI ui;
+
+    ui.run();
+
     return 0;
 }
