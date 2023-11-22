@@ -44,6 +44,8 @@ namespace Map {
     static const double w = 700;
     static const double h = 700;
 
+    static const std::string map_filename = "resrc/map.png";
+
     void draw();
 };
 
