@@ -31,6 +31,7 @@ private:
     void init();
     void tick();
     void handle_input();
+    void draw_table() const;
     void draw() const;
     void generate_order();
 public:

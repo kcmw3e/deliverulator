@@ -37,10 +37,7 @@ void UI::handle_input() {
     }
 }
 
-void UI::draw() const {
-    Colors::black.set_as_gl_clear_color();
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+void UI::draw_table() const {
     double ref_x = Map::w;
     double order_x = ref_x + 200;
     double table_y = 50;
@@ -58,13 +55,8 @@ void UI::draw() const {
     glVertex2d(ref_x + 500, table_y);
     glEnd();
 
-    glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2i(ref_x + 40, 40);
-    YsGlDrawFontBitmap20x28("Robots");
-
-    glColor3f(0.0, 0.0, 0.0);
-    glRasterPos2i(ref_x + 280, 40);
-    YsGlDrawFontBitmap20x28("Orders");
+    Prims::table_cell(ref_x, table_y, robot_w, spacing, 1.0, Colors::red, "Robots", Colors::white);
+    Prims::table_cell(ref_x + robot_w, table_y, order_w, spacing, 1.0, Colors::red, "Orders", Colors::white);
 
     for (size_t i = 0; i < std::size(this->robots); i++)
         Prims::table_cell(
@@ -80,6 +72,14 @@ void UI::draw() const {
 
     for (auto robot: this->robots)
         robot.draw();
+
+}
+
+void UI::draw() const {
+    Colors::black.set_as_gl_clear_color();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    this->draw_table();
 
     FsSwapBuffers();
 }
