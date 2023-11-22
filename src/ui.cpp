@@ -76,6 +76,10 @@ void UI::draw_table() const {
 }
 
 void UI::draw() const {
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0, this->win.viewport.w, 0, this->win.viewport.h, -1.0, 1.0);
+
     Colors::black.set_as_gl_clear_color();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
