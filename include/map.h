@@ -20,7 +20,7 @@
 
 namespace Map {
     struct Node {
-        static constexpr double rad = 1.0;
+        static constexpr double rad = 10.0;
 
         const double x;
         const double y;

@@ -4,6 +4,8 @@
 
 #include "fssimplewindow.h" // includes OpenGL, takes care of different OS locations
 
+#include "config.h"
+
 #include "map.h"
 
 namespace Map {
@@ -19,15 +21,16 @@ namespace Map {
       neighbors(neighbors) { }
 
     void draw() {
-        glPointSize(8);
-        glColor3ub(0, 0, 0);
+
+        Config::Colors::node.set_as_gl_color();
+
+        glPointSize(Node::rad);
         glBegin(GL_POINTS);
         for (const auto& node : Map::nodes)
             glVertex2i(node.x, node.y);
         glEnd();
 
         // draw connections between nodes
-        glColor3ub(0, 0, 0);
         glBegin(GL_LINES);
         for (const auto& node : Map::nodes) {
             for (const auto& neighbor : node.neighbors) {

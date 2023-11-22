@@ -18,6 +18,7 @@ namespace Config {
         static const auto text = RGBA_Colors::white;
         static const auto text_active = RGBA_Colors::red;
         static const auto cell_border = RGBA_Colors::white;
+        static const auto node = RGBA_Colors::black;
     }
 
     namespace Table {
