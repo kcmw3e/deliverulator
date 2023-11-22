@@ -38,35 +38,27 @@ void UI::handle_input() {
 }
 
 void UI::draw_table() const {
-    double ref_x = Map::w;
-    double order_x = ref_x + 200;
-    double table_y = 50;
-    double spacing = 40;
-    double order_w = 300;
-    double robot_w = 200;
+    double cell_w = 200.0;
+    double cell_h = 40.0;
+    double border_w = 2.0;
 
-    glColor3f(0.0, 0.0, 0.0);
-    glBegin(GL_LINES);
-    glVertex2d(ref_x, 0);
-    glVertex2d(ref_x, Map::h);
-    glVertex2d(ref_x + robot_w, 0);
-    glVertex2d(ref_x + robot_w, Map::h);
-    glVertex2d(ref_x, table_y);
-    glVertex2d(ref_x + 500, table_y);
-    glEnd();
+    double x = this->map_img.w;
+    double y = this->map_img.h - cell_h;
 
-    Prims::table_cell(ref_x, table_y, robot_w, spacing, 1.0, Colors::red, "Robots", Colors::white);
-    Prims::table_cell(ref_x + robot_w, table_y, order_w, spacing, 1.0, Colors::red, "Orders", Colors::white);
+    Prims::table_cell(x, y, cell_w, cell_h, border_w, Colors::red, "Robots", Colors::white);
 
     for (size_t i = 0; i < std::size(this->robots); i++)
         Prims::table_cell(
-                ref_x, table_y + i*spacing, robot_w, spacing, 1.0, Colors::red,
+                x, y - (i + 1)*cell_h, cell_w, cell_h, border_w, Colors::red,
                 robots[i].id, Colors::white
         );
 
+    x += cell_w;
+
+    Prims::table_cell(x, y, cell_w, cell_h, border_w, Colors::red, "Orders", Colors::white);
     for (size_t i = 0; i < orders.size(); i++)
         Prims::table_cell(
-            order_x, table_y + i*spacing, order_w, spacing, 1.0, Colors::red,
+            x, y - (i + 1)*cell_h, cell_w, cell_h, border_w, Colors::red,
             std::to_string(orders[i]->id), Colors::white
         );
 
