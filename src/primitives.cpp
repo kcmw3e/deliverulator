@@ -52,6 +52,6 @@ namespace Primitives {
         std::string str, RGBA sc
     ) {
         rect(x, y, w, h, lw, rc);
-        text(x + 40, y + 30, str, sc);
+        text(x + (h - 16.0)/2.0, y + (h - 16.0)/2.0, str, sc);
     }
 }
