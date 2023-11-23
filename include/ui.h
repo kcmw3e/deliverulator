@@ -25,7 +25,13 @@ private:
         ORDER, ROBOT
     };
 
-    Robot robots[5];
+    std::vector<Robot> robots = {
+        Robot("Botbot", Map::find_node("TEP")),
+        Robot("Zapper", Map::find_node("BH")),
+        Robot("Margo" , Map::find_node("CUC")),
+        Robot("Jolty" , Map::find_node("WEH")),
+        Robot("Turtle", Map::find_node("MM")),
+    };
     std::vector<Order*> orders;
     int next_order_id = 0;
     size_t order_sel = 0;
