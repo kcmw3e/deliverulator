@@ -62,6 +62,9 @@ void UI::handle_input() {
         if (*sel == sel_max)
             *sel = 0;
     }
+
+    if (this->assign.has_changed_to_pressed())
+        this->assign_order();
 }
 
 void UI::draw_table() const {
@@ -109,7 +112,6 @@ void UI::draw_table() const {
 
     for (auto robot: this->robots)
         robot.draw();
-
 }
 
 void UI::draw() const {
@@ -142,6 +144,16 @@ void UI::generate_order() {
 
     next_order_id += 1;
     orders.push_back(order);
+}
+
+void UI::assign_order() {
+    auto& robot = this->robots[this->robot_sel];
+
+    if (!robot.is_busy() && !this->orders.empty()) {
+        auto order = this->orders[this->order_sel];
+        this->orders.erase(this->orders.begin() + this->order_sel);
+        robot.assign_order(order);
+    }
 }
 
 UI::UI()

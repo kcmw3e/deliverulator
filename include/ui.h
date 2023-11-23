@@ -49,6 +49,7 @@ private:
     void draw_table() const;
     void draw() const;
     void generate_order();
+    void assign_order();
 public:
     UI();
     void run();
