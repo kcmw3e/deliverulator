@@ -272,5 +272,5 @@ void Robot::assign_order(Order* order) {
 }
 
 bool Robot::is_busy() const {
-    return this->order == nullptr;
+    return this->order != nullptr;
 }
