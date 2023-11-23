@@ -104,9 +104,10 @@ void UI::draw_table() const {
         if (this->order_sel == i)
             Prims::rect(x, y - (i + 1)*cell_h, cell_w, cell_h, sel_order_color);
 
+        std::string str = "[" + std::to_string(orders[i]->id) + "]"
+                        + " (" + orders[i]->src.name + "->" + orders[i]->dest.name + ")";
         Prims::table_cell(
-            x, y - (i + 1)*cell_h, cell_w, cell_h, cell_bw, cell_border_color,
-            std::to_string(orders[i]->id), text_color
+            x, y - (i + 1)*cell_h, cell_w, cell_h, cell_bw, cell_border_color, str, text_color
         );
     }
 
