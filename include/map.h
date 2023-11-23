@@ -128,6 +128,7 @@ namespace Map {
     static const std::string map_filename = "resrc/map.png";
 
     void draw();
+    const Node* find_node(std::string name);
 };
 
 #endif // !defined(MAP_H)
