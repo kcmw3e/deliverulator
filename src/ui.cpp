@@ -36,6 +36,32 @@ void UI::handle_input() {
         this->is_running = false;
         return;
     }
+
+    if (this->nav_sel_mode.has_changed_to_pressed()) {
+        if (this->sel_mode == UI::Sel_mode::ROBOT)
+            this->sel_mode = UI::Sel_mode::ORDER;
+        else
+            this->sel_mode = UI::Sel_mode::ROBOT;
+    }
+
+    size_t* sel = &this->robot_sel;
+    size_t sel_max = std::size(this->robots);
+
+    if (this->sel_mode == UI::Sel_mode::ORDER)
+        sel = &this->order_sel, sel_max = this->orders.size();
+
+    if (this->nav_up.has_changed_to_pressed()) {
+        if (*sel == 0)
+            *sel = sel_max - 1;
+        else
+            (*sel)--;
+    }
+
+    if (this->nav_down.has_changed_to_pressed()) {
+        (*sel)++;
+        if (*sel == sel_max)
+            *sel = 0;
+    }
 }
 
 void UI::draw_table() const {
@@ -45,26 +71,41 @@ void UI::draw_table() const {
     auto text_color = Config::Colors::text;
     auto text_active_color = Config::Colors::text_active;
     auto cell_border_color = Config::Colors::cell_border;
+    auto sel_order_color = Config::Colors::sel;
+    auto sel_robot_color = Config::Colors::sel;
+
+    if (this->sel_mode == UI::Sel_mode::ROBOT)
+        sel_order_color = Config::Colors::sel_alt;
+    else
+        sel_robot_color = Config::Colors::sel_alt;
 
     double x = this->map_img.w;
     double y = this->map_img.h - cell_h;
 
     Prims::table_cell(x, y, cell_w, cell_h, cell_bw, cell_border_color, "Robots", text_color);
 
-    for (size_t i = 0; i < std::size(this->robots); i++)
+    for (size_t i = 0; i < std::size(this->robots); i++) {
+        if (this->robot_sel == i)
+            Prims::rect(x, y - (i + 1)*cell_h, cell_w, cell_h, sel_robot_color);
+
         Prims::table_cell(
                 x, y - (i + 1)*cell_h, cell_w, cell_h, cell_bw, cell_border_color,
                 robots[i].id, robots[i].is_busy() ? text_active_color : text_color
         );
+    }
 
     x += cell_w;
 
     Prims::table_cell(x, y, cell_w, cell_h, cell_bw, cell_border_color, "Orders", text_color);
-    for (size_t i = 0; i < orders.size(); i++)
+    for (size_t i = 0; i < orders.size(); i++) {
+        if (this->order_sel == i)
+            Prims::rect(x, y - (i + 1)*cell_h, cell_w, cell_h, sel_order_color);
+
         Prims::table_cell(
             x, y - (i + 1)*cell_h, cell_w, cell_h, cell_bw, cell_border_color,
             std::to_string(orders[i]->id), text_color
         );
+    }
 
     for (auto robot: this->robots)
         robot.draw();

@@ -21,13 +21,24 @@ namespace YSSF = YSSimple_Fixes;
 
 class UI {
 private:
+    enum Sel_mode {
+        ORDER, ROBOT
+    };
+
     Robot robots[5];
     std::vector<Order*> orders;
     int next_order_id = 0;
+    size_t order_sel = 0;
+    size_t robot_sel = 0;
+    UI::Sel_mode sel_mode = ROBOT;
     YSSF::Raw_rgba_img map_img;
 
     FSSF::Window win;
     FSSF::Key kill = FSSF::Key(FSKEY_ESC);
+    FSSF::Key nav_up = FSSF::Key(FSKEY_UP);
+    FSSF::Key nav_down = FSSF::Key(FSKEY_DOWN);
+    FSSF::Key nav_sel_mode = FSSF::Key(FSKEY_TAB);
+    FSSF::Key assign = FSSF::Key(FSKEY_ENTER);
     FSSF::Mouse mouse = FSSF::Mouse();
     bool is_running = false;
 
