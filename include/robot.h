@@ -9,6 +9,8 @@
 #if !defined(ROBOT_H)
 #define ROBOT_H
 
+#include <string>
+
 #include "path-planner.h"
 #include "order.h"
 #include "map.h"
@@ -20,10 +22,11 @@ class Robot {
     double y;
     Order* order;
     Path path;
-    Map::Node* last_dest;
+    const Map::Node* last_dest;
 public:
     const std::string id;
 
+    Robot(std::string id, const Map::Node* start);
     void draw() const;
     void tick();
     void assign_order(Order* order);

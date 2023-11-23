@@ -9,6 +9,15 @@
 
 const double YsPi = 3.1415927;
 
+Robot::Robot(std::string id, const Map::Node* start)
+: x(start->x),
+  y(start->y),
+  order(nullptr),
+  last_dest(start),
+  id(id) {
+
+}
+
 void Robot::draw() const {
     float width = 50; //150
     float height = width / 5;
