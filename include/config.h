@@ -20,7 +20,7 @@ namespace Config {
         static const auto cell_border = RGBA_Colors::white;
         static const auto node = RGBA_Colors::black;
         static const auto sel = RGBA_Colors::green;
-        static const auto sel_alt = RGBA_Colors::red;
+        static const auto sel_alt = RGBA_Colors::blue;
     }
 
     namespace Table {
