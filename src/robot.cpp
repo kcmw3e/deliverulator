@@ -267,7 +267,9 @@ void Robot::tick() {
     y += speed * dirY;
 }
 
-void Robot::assign_order(Order* order) { }
+void Robot::assign_order(Order* order) {
+    this->order = order;
+}
 
 bool Robot::is_busy() const {
     return this->order == nullptr;
