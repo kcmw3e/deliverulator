@@ -20,7 +20,7 @@ class Robot {
 
     double x;
     double y;
-    Order* order;
+    const Order* order;
     Path path;
     const Map::Node* last_dest;
 public:
