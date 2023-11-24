@@ -269,6 +269,7 @@ void Robot::tick() {
 
 void Robot::assign_order(Order* order) {
     this->order = order;
+    this->path = path_planner(this->last_dest, &order->src, &order->dest);
 }
 
 bool Robot::is_busy() const {
