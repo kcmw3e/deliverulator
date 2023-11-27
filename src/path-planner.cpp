@@ -10,8 +10,6 @@
 #include <queue>
 #include <string>
 #include <unordered_map>
-// #include "ysglfontdata.h"
-// #include "fssimplewindow.h"
 #include <iostream>
 #include <limits>
 #include <cmath>
@@ -111,7 +109,7 @@ std::vector<const Node*> dijkstra(const Node& startNode, const Node& endNode){
 
 
 
-std::vector<const Node*> pathPlanner(const Node& lastNode, const Node& orderStartNode, const Node& orderEndNode){
+Path path_planner(const Node& lastNode, const Node& orderStartNode, const Node& orderEndNode){
     std::vector<const Node*> finalPath;
     std::vector<const Node*> path1 = dijkstra(lastNode, orderStartNode);
     std::vector<const Node*> path2 = dijkstra(orderStartNode, orderEndNode);
