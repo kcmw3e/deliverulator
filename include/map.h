@@ -32,7 +32,7 @@ namespace Map {
     };
 
     static Node HH{77, 173, "HH"};
-    static Node PH{100, 173, "PH"};
+    static Node PH{100, 128, "PH"};
     static Node BH{211, 67, "BH"};
     static Node WEH{121, 205, "WEH"};
     static Node DH{227, 176, "DH"};
