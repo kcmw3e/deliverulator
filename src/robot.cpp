@@ -247,7 +247,7 @@ void Robot::tick() {
     float nodeY = path[1]->y;
 
     if (nodeX == std::round(x) && nodeY == std::round(y))
-        path.erase(path.begin(), path.begin() + 2);
+        path.erase(path.begin());
 
     //find travel direction
     float dirX = nodeX - x;
@@ -269,7 +269,7 @@ void Robot::tick() {
 
 void Robot::assign_order(Order* order) {
     this->order = order;
-    this->path = path_planner(this->last_dest, &order->src, &order->dest);
+    this->path = path_planner(*this->last_dest, order->src, order->dest);
 }
 
 bool Robot::is_busy() const {

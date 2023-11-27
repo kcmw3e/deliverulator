@@ -12,6 +12,6 @@
 
 using Path = std::vector<const Map::Node*>;
 
-Path path_planner(const Map::Node* start, const Map::Node* src, const Map::Node* dest);
+Path path_planner(const Map::Node& start, const Map::Node& src, const Map::Node& dest);
 
 #endif // !defined(PATH_PLANNER_H)
