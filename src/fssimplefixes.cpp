@@ -134,7 +134,7 @@ namespace FSSimple_Fixes {
         this->curr_state = state;
     }
 
-    auto Key::keys = std::set<Key*>();
+    std::set<Key*> Key::keys = std::set<Key*>();
 
     Key::Key(int code)
     : code(code) {
