@@ -9,6 +9,7 @@
 #define RGBA_H
 
 #include <cstddef>
+#include <cstdint>
 
 #include "fssimplewindow.h"
 
