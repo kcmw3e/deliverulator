@@ -106,7 +106,10 @@ void Robot::tick() {
     float nodeY = path[0]->y;
 
     if (nodeX == std::round(x) && nodeY == std::round(y))
+    {
+        last_dest = path[0]; //set last destination node
         path.erase(path.begin());
+    }
 
     //find travel direction
     float dirX = nodeX - x;
