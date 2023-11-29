@@ -18,15 +18,13 @@ Robot::Robot(std::string id, const Map::Node* start)
 
 }
 
-void drawRobotLeg(double legX, double y, double width, double height, bool color)
-{
+void drawRobotLeg(double legX, double y, double width, double height, bool color) {
     glColor3ub(0, 0, 0);
     int rad5 = width / 22;
     double sx5 = legX - width / 3;
     double sy5 = y + height / 7;
     glBegin(GL_POLYGON);
-    for (int i = 0; i < 64; i++)
-    {
+    for (int i = 0; i < 64; i++) {
         double angle = (double)i * YsPi / 32.0;
         double cx = (double)sx5 + cos(angle) * (double)rad5;
         double cy = (double)sy5 + sin(angle) * (double)rad5;
@@ -42,12 +40,9 @@ void drawRobotLeg(double legX, double y, double width, double height, bool color
     glVertex2f(legX - width / 3 + width / 21.4, y + height / 7);
     glEnd();
 
-    if (color == true)
-    {
+    if (color == true) {
         glColor3ub(255, 220, 0);
-    }
-    else
-    {
+    } else {
         glColor3ub(0, 0, 0);
     }
 
@@ -63,8 +58,7 @@ void drawRobotLeg(double legX, double y, double width, double height, bool color
     double sx6 = legX - width / 3 - width / 35; //- width / 30;
     double sy6 = y + height / 7 - width / 2.5;
     glBegin(GL_POLYGON);
-    for (int i = 0; i < 64; i++)
-    {
+    for (int i = 0; i < 64; i++) {
         double angle = (double)i * YsPi / 32.0;
         double cx = (double)sx6 + cos(angle) * (double)rad6;
         double cy = (double)sy6 + sin(angle) * (double)rad6;
@@ -95,8 +89,7 @@ void Robot::draw() const {
 }
 
 void Robot::tick() {
-    if (path.empty())
-    {
+    if (path.empty()) {
         this->order = nullptr;
         return;
     }
@@ -105,8 +98,7 @@ void Robot::tick() {
     float nodeX = path[0]->x;
     float nodeY = path[0]->y;
 
-    if (nodeX == std::round(x) && nodeY == std::round(y))
-    {
+    if (nodeX == std::round(x) && nodeY == std::round(y)) {
         last_dest = path[0]; //set last destination node
         path.erase(path.begin());
     }
