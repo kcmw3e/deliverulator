@@ -70,7 +70,7 @@ namespace Map {
     };
 
     static const Node nodes[] = {
-        Node{ 77, 173, "HH"  , {&nodes[NI_HH]}},
+        Node{ 77, 173, "HH"  , {&nodes[NI_HH1]}},
         Node{100, 128, "PH"  , {&nodes[NI_PH1]}},
         Node{211,  67, "BH"  , {&nodes[NI_BH1]}},
         Node{121, 205, "WEH" , {&nodes[NI_WEH1]}},
@@ -122,7 +122,10 @@ namespace Map {
 
         Node{
             395, 289, "CutULC",
-            {&nodes[NI_CutInter], &nodes[NI_CutLLC], &nodes[NI_CutURC], &nodes[NI_CUC1]}
+            {
+                &nodes[NI_CutInter], &nodes[NI_CutLLC], &nodes[NI_CutURC], &nodes[NI_PB],
+                &nodes[NI_PCA1]
+            }
         },
 
         Node{317, 309, "PB", {&nodes[NI_GHC], &nodes[NI_CutULC]}},
