@@ -9,15 +9,10 @@
 #include "map.h"
 
 namespace Map {
-    Node::Node(double x, double y, std::string name)
+    Node::Node(double x, double y, std::string name, const std::vector<const Node*> neighbors)
     : x(x),
       y(y),
-      name(name) { }
-
-    Node::Node(const Node& node, std::vector<const Node*> neighbors)
-    : x(node.x),
-      y(node.y),
-      name(node.name),
+      name(name),
       neighbors(neighbors) { }
 
     void draw() {

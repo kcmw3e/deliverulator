@@ -27,102 +27,142 @@ namespace Map {
         const std::string name;
         const std::vector<const Node*> neighbors;
 
-        Node(double x, double y, std::string name);
-        Node(const Node& node, const std::vector<const Node*> neightbors);
+        Node(double x, double y, std::string name, const std::vector<const Node*> neighbors);
     };
 
-    static Node HH{77, 173, "HH"};
-    static Node PH{100, 128, "PH"};
-    static Node BH{211, 67, "BH"};
-    static Node WEH{121, 205, "WEH"};
-    static Node DH{227, 176, "DH"};
-    static Node CFA{448, 106, "CFA"};
-    static Node FE{397, 151, "FE"};
-    static Node POS{547, 58, "POS"};
-    static Node MM{595, 134, "MM"};
-    static Node CUC{529, 376, "CUC"};
-    static Node PCA{392, 312, "PCA"};
-    static Node GHC{256, 318, "GHC"};
-    static Node TEP{203, 591, "TEP"};
+    enum Node_index {
+        NI_HH             ,
+        NI_PH             ,
+        NI_BH             ,
+        NI_WEH            ,
+        NI_DH             ,
+        NI_CFA            ,
+        NI_FE             ,
+        NI_POS            ,
+        NI_MM             ,
+        NI_CUC            ,
+        NI_PCA            ,
+        NI_GHC            ,
+        NI_TEP            ,
+        NI_HH1            ,
+        NI_PH1            ,
+        NI_WEH1           ,
+        NI_DH1            ,
+        NI_BH1            ,
+        NI_CFALawn1       ,
+        NI_CFALawn2       ,
+        NI_CutLLC         ,
+        NI_CutLRC         ,
+        NI_CFA1           ,
+        NI_POS1           ,
+        NI_MM1            ,
+        NI_CutInter       , // Cut intersection at middle
+        NI_CutULC         ,
+        NI_PB             , // Pausch Bridge
+        NI_CutURC         ,
+        NI_CUC1           ,
+        NI_PCA1           ,
+        NI_PCA2           ,
+        NI_Forbes1        , // Intersection point from Forbes to CUC/PCA
+        NI_ForbesMoorewood, // Forbes/Morewood intersection
+        NI_ForbesTepper   , // Forbes/Tepper Intersection
+        NI_TEP1           ,
+    };
 
-    static Node HH1{108, 160, "HH1"};
-    static Node PH1{106, 140, "PH1"};
-    static Node WEH1{116, 181, "WEH1"};
-    static Node DH1{218, 153, "DH1"};
-    static Node BH1{220, 110, "BH1"};
-    static Node CFALawn1{346, 118, "CFALawn1"};
-    static Node CFALawn2{335, 78, "CFALawn2"};
-    static Node CutLLC{364, 168, "CutLLC"};
-    static Node CutLRC{447, 146, "CutLRC"};
-    static Node CFA1{439, 113, "CFA1"};
-    static Node POS1{548, 80, "POS1"};
-    static Node MM1{575, 110, "MM1"};
-    static Node CutInter{408, 213, "CutInter"}; // Cut intersection at middle
-    static Node CutULC{395, 289, "CutULC"};
-    static Node PB{317, 309, "PB"}; // Pausch Bridge
-    static Node CutURC{484, 266, "CutURC"};
-    static Node CUC1{514, 379, "CUC1"};
-    static Node PCA1{403, 306, "PCA1"};
-    static Node PCA2{429, 405, "PCA2"};
-    static Node Forbes1{443, 458, "Forbes1"}; // Intersection point from Forbes to CUC/PCA
-    static Node ForbesMorewood{449, 513, "ForbesMorewood"}; // Forbes/Morewood intersection
-    static Node ForbesTepper{262, 510, "ForbesTepper"}; // Forbes/Tepper Intersection
-    static Node TEP1{261, 570, "TEP1"};
+    static const Node nodes[] = {
+        Node{ 77, 173, "HH"  , {&nodes[NI_HH]}},
+        Node{100, 128, "PH"  , {&nodes[NI_PH1]}},
+        Node{211,  67, "BH"  , {&nodes[NI_BH1]}},
+        Node{121, 205, "WEH" , {&nodes[NI_WEH1]}},
+        Node{227, 176, "DH"  , {&nodes[NI_DH1]}},
+        Node{448, 106, "CFA" , {&nodes[NI_CFA1]}},
+        Node{397, 151, "FE"  , {&nodes[NI_CutLLC], &nodes[NI_CutLRC]}},
+        Node{547,  58, "POS" , {&nodes[NI_POS1]}},
+        Node{595, 134, "MM"  , {&nodes[NI_MM1]}},
+        Node{529, 376, "CUC" , {&nodes[NI_CUC1]}},
+        Node{392, 312, "PCA" , {&nodes[NI_PCA1]}},
+        Node{256, 318, "GHC" , {&nodes[NI_PB]}},
+        Node{203, 591, "TEP" , {&nodes[NI_TEP1]}},
+        Node{108, 160, "HH1" , {&nodes[NI_HH], &nodes[NI_WEH1], &nodes[NI_PH1]}},
+        Node{106, 140, "PH1" , {&nodes[NI_PH], &nodes[NI_HH1], &nodes[NI_BH1]}},
+        Node{116, 181, "WEH1", {&nodes[NI_WEH], &nodes[NI_HH1], &nodes[NI_DH1]}},
 
-    static const std::vector<Node> nodes = {
-        Node(HH,  {&HH1}),
-        Node(PH,  {&PH1}),
-        Node(BH,  {&BH1}),
-        Node(WEH, {&WEH1}),
-        Node(DH,  {&DH1}),
-        Node(CFA, {&CFA1}),
-        Node(FE,  {&CutLLC, &CutLRC}),
-        Node(POS, {&POS1}),
-        Node(MM,  {&MM1}),
-        Node(CUC, {&CUC1}),
-        Node(PCA, {&PCA1}),
-        Node(GHC, {&PB}),
-        Node(TEP, {&TEP1}),
+        Node{
+            218, 153, "DH1", {&nodes[NI_DH], &nodes[NI_WEH1], &nodes[NI_BH1], &nodes[NI_CFALawn1]}
+        },
 
-        Node(HH1,            {&HH, &WEH1, &PH1}),
-        Node(PH1,            {&PH, &HH1, &BH1}),
-        Node(WEH1,           {&WEH, &HH1, &DH1}),
-        Node(DH1,            {&DH, &WEH1, &BH1, &CFALawn1}),
-        Node(BH1,            {&BH, &PH1, &DH1, &CFALawn2}),
-        Node(CFALawn1,       {&DH1, &CFALawn2, &CutLLC}),
-        Node(CFALawn2,       {&CFALawn1, &BH1}),
-        Node(CutLLC,         {&CFALawn1, &CutInter, &CutULC, &CutLRC}),
-        Node(CutLRC,         {&CutLLC, &CutInter, &CFA1, &CutURC, &POS1, &MM1}),
-        Node(CFA1,           {&CFA, &CutLRC}),
-        Node(POS1,           {&POS, &CutLRC, &MM1}),
-        Node(MM1,            {&MM, &POS1, &CutLRC}),
-        Node(CutInter,       {&CutLLC, &CutLRC, &CutULC, &CutURC}),
-        Node(CutULC,         {&CutInter, &CutLLC, &CutURC, &PB, &PCA1}),
-        Node(PB,             {&GHC, &CutULC}),
-        Node(CutURC,         {&CutInter, &CutULC, &CutLRC, &CUC1}),
-        Node(CUC1,           {&CUC, &CutURC, &PCA2, &Forbes1}),
-        Node(PCA1,           {&PCA, &CutULC, &PCA2}),
-        Node(PCA2,           {&PCA1, &CUC1, &Forbes1}),
-        Node(Forbes1,        {&PCA2, &CUC1, &ForbesMorewood}),
-        Node(ForbesMorewood, {&Forbes1, &ForbesTepper}),
-        Node(ForbesTepper,   {&ForbesMorewood, &TEP1}),
-        Node(TEP1,           {&TEP, &ForbesMorewood}),
+        Node{
+            220, 110, "BH1", {&nodes[NI_BH], &nodes[NI_PH1], &nodes[NI_DH1], &nodes[NI_CFALawn2]}
+        },
+
+        Node{346, 118, "CFALawn1", {&nodes[NI_DH1], &nodes[NI_CFALawn2], &nodes[NI_CutLLC]}},
+        Node{335,  78, "CFALawn2", {&nodes[NI_CFALawn1], &nodes[NI_BH1]}},
+
+        Node{
+            364, 168, "CutLLC",
+            {&nodes[NI_CFALawn1], &nodes[NI_CutInter], &nodes[NI_CutULC], &nodes[NI_CutLRC]}
+        },
+
+        Node{
+            447, 146, "CutLRC",
+            {
+                &nodes[NI_CutLLC], &nodes[NI_CutInter], &nodes[NI_CFA1], &nodes[NI_CutURC],
+                &nodes[NI_POS1], &nodes[NI_MM1]
+            }
+        },
+
+        Node{439, 113, "CFA1", {&nodes[NI_CFA], &nodes[NI_CutLRC]}},
+        Node{548,  80, "POS1", {&nodes[NI_POS], &nodes[NI_CutLRC], &nodes[NI_MM1]}},
+        Node{575, 110, "MM1" , {&nodes[NI_MM], &nodes[NI_POS1], &nodes[NI_CutLRC]}},
+
+        Node{
+            408, 213, "CutInter",
+            {&nodes[NI_CutLLC], &nodes[NI_CutLRC], &nodes[NI_CutULC], &nodes[NI_CutURC]}
+        },
+
+        Node{
+            395, 289, "CutULC",
+            {&nodes[NI_CutInter], &nodes[NI_CutLLC], &nodes[NI_CutURC], &nodes[NI_CUC1]}
+        },
+
+        Node{317, 309, "PB", {&nodes[NI_GHC], &nodes[NI_CutULC]}},
+
+        Node{
+            484, 266, "CutURC",
+            {&nodes[NI_CutInter], &nodes[NI_CutULC], &nodes[NI_CutLRC], &nodes[NI_CUC1]}
+        },
+
+        Node{
+            514, 379, "CUC1",
+            {&nodes[NI_CUC], &nodes[NI_CutURC], &nodes[NI_PCA2], &nodes[NI_Forbes1]}
+        },
+
+        Node{403, 306, "PCA1", {&nodes[NI_PCA], &nodes[NI_CutULC], &nodes[NI_PCA2]}},
+        Node{429, 405, "PCA2", {&nodes[NI_PCA1], &nodes[NI_CUC1], &nodes[NI_Forbes1]}},
+
+        Node{
+            443, 458, "Forbes1", {&nodes[NI_PCA2], &nodes[NI_CUC1], &nodes[NI_ForbesMoorewood]}
+        },
+
+        Node{449, 513, "ForbesMorewood", {&nodes[NI_Forbes1], &nodes[NI_ForbesTepper]}},
+        Node{262, 510, "ForbesTepper"  , {&nodes[NI_ForbesMoorewood], &nodes[NI_TEP1]}},
+        Node{261, 570, "TEP1"          , {&nodes[NI_TEP], &nodes[NI_ForbesMoorewood]}},
     };
 
     static const std::vector<const Node*> buildings = {
-        &nodes[ 0], // HH
-        &nodes[ 1], // PH
-        &nodes[ 2], // BH
-        &nodes[ 3], // WEH
-        &nodes[ 4], // DH
-        &nodes[ 5], // CFA
-        &nodes[ 6], // FE
-        &nodes[ 7], // POS
-        &nodes[ 8], // MM
-        &nodes[ 9], // CUC
-        &nodes[10], // PCA
-        &nodes[11], // GHC
-        &nodes[12], // TEP
+        &nodes[NI_HH ],
+        &nodes[NI_PH ],
+        &nodes[NI_BH ],
+        &nodes[NI_WEH],
+        &nodes[NI_DH ],
+        &nodes[NI_CFA],
+        &nodes[NI_FE ],
+        &nodes[NI_POS],
+        &nodes[NI_MM ],
+        &nodes[NI_CUC],
+        &nodes[NI_PCA],
+        &nodes[NI_GHC],
+        &nodes[NI_TEP],
     };
 
     static const std::string map_filename = "resrc/map.png";
