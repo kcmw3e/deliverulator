@@ -96,11 +96,14 @@ void Robot::draw() const {
 
 void Robot::tick() {
     if (path.empty())
+    {
+        this->order = nullptr;
         return;
+    }
 
     //x and y of next node
     float nodeX = path[0]->x;
-    float nodeY = path[1]->y;
+    float nodeY = path[0]->y;
 
     if (nodeX == std::round(x) && nodeY == std::round(y))
         path.erase(path.begin());
