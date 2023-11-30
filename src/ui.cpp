@@ -8,6 +8,7 @@
 #include "primitives.h"
 #include "rgba.h"
 #include "config.h"
+#include <time.h>
 
 namespace Prims = Primitives;
 
@@ -124,9 +125,9 @@ void UI::draw() const {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     this->map_img.draw();
-    this->draw_table();
     Map::draw();
-
+    this->draw_table();
+    
     FsSwapBuffers();
 }
 
@@ -163,6 +164,9 @@ UI::UI()
 
 void UI::run() {
     this->init();
+
+    int currentTime = time(NULL);
+    srand(currentTime);
 
     while (this->is_running) {
         this->tick();

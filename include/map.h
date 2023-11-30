@@ -159,7 +159,6 @@ namespace Map {
         &nodes[NI_WEH],
         &nodes[NI_DH ],
         &nodes[NI_CFA],
-        &nodes[NI_FE ],
         &nodes[NI_POS],
         &nodes[NI_MM ],
         &nodes[NI_CUC],
