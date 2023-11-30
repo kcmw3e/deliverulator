@@ -16,7 +16,7 @@
 #include "map.h"
 
 class Robot {
-    static constexpr double speed = 0.125;
+    static constexpr double speed = 1;
 
     double x;
     double y;
