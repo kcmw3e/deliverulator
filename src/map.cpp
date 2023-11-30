@@ -35,13 +35,4 @@ namespace Map {
         }
         glEnd();
     }
-
-    const Node* find_node(std::string name) {
-        for (auto& node : nodes)
-            if (node.name == name)
-                return &node;
-
-        return nullptr;
-    }
 }
-

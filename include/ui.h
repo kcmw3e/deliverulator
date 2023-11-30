@@ -26,11 +26,11 @@ private:
     };
 
     std::vector<Robot> robots = {
-        Robot("Botbot", Map::find_node("TEP")),
-        Robot("Zapper", Map::find_node("BH")),
-        Robot("Margo" , Map::find_node("CUC")),
-        Robot("Jolty" , Map::find_node("WEH")),
-        Robot("Turtle", Map::find_node("MM")),
+        Robot("Botbot", &Map::nodes[Map::NI_TEP]),
+        Robot("Zapper", &Map::nodes[Map::NI_BH]),
+        Robot("Margo" , &Map::nodes[Map::NI_CUC]),
+        Robot("Jolty" , &Map::nodes[Map::NI_WEH]),
+        Robot("Turtle", &Map::nodes[Map::NI_MM]),
     };
     std::vector<Order*> orders;
     int next_order_id = 0;
