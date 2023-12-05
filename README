@@ -35,3 +35,23 @@ Play instructions
     indicate the pairing of a robot to an order when <ENTER> is pressed. Upon order assignment, a
     robot's name will turn red and the robot can no longer be assigned an order until the robot has
     completed its active order, at which time the name will return to its original color.
+
+
+Compilation
+----------------------------------------------------------------------------------------------------
+    To compile, simply add the main source file `deliverulator.cpp`, the source files located in the
+    `src/` directory, and the header files located in the `include` directory to your respective
+    build system (e.g. Visual Studio, XCode), or to your compilation command such as
+
+        `clang++ -o build/deliverulator deliverulator.cpp ./src/* -I./include/`
+
+    Also make sure you can link to the class library files (i.e. `fssimplewindow`, `yspng`, etc.)
+    and include the respective headers in your build system. This could also be done by copying the
+    class library source files to the `src/` directory and the header files to the `include/`
+    directory before adding them to you build system.
+
+    After compiling, make sure to copy the *whole* `resrc/` directory to the same location as your
+    compiled executable. For example, if your executable is placed in a directory called `build/`,
+    you should also have a directory `build/resrc/` that contains the same files as `resrc/` in the
+    root directory of this project. When this is done, simply run the program however you like on
+    your machine (e.g. `./build/deliverulator` on the command line).
